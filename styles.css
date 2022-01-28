@@ -117,10 +117,10 @@ header {
   margin: 1rem;
   border-radius: 100%;
   border: 14px solid transparent;
-  /* background-blend-mode: multiply; */
   width: 110px;
   height: 110px;
   padding: 1rem;
+  box-shadow: 0 6px rgba(0, 0, 0, 0.25), 0 6px inset rgba(0, 0, 0, 0.25);
 }
 
 .rock {
@@ -133,7 +133,6 @@ header {
   grid-column: 2/3;
   grid-row: 2/3;
   justify-self: center;
-  box-shadow: 0 6px var(--red-dark), 0 6px inset rgba(0, 0, 0, 0.25);
 }
 
 .paper {
@@ -145,7 +144,6 @@ header {
   background-color: white;
   grid-column: 1/2;
   grid-row: 1/2;
-  box-shadow: 0 6px var(--blue-dark), 0 6px inset rgba(0, 0, 0, 0.25);
 }
 
 .scissors {
@@ -157,7 +155,6 @@ header {
   background-color: white;
   grid-column: 3/4;
   grid-row: 1/2;
-  box-shadow: 0 6px var(--yellow-dark), 0 6px inset rgba(0, 0, 0, 0.25);
 }
 
 #rules-container {

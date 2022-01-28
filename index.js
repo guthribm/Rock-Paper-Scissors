@@ -117,7 +117,7 @@ function handleChoice(event) {
   // determineWinner(player, computer);
   setTimeout(() => {
     determineWinner(player, computer);
-  }, 1500);
+  }, 1000);
   setTimeout(() => {
     houseSelection.classList.remove("blank-selection");
     houseSelection.classList.add(computer);
