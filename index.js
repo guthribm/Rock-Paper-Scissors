@@ -117,7 +117,7 @@ function handleChoice(event) {
   // determineWinner(player, computer);
   setTimeout(() => {
     determineWinner(player, computer);
-  }, 1000);
+  }, 1300);
   setTimeout(() => {
     houseSelection.classList.remove("blank-selection");
     houseSelection.classList.add(computer);
@@ -126,7 +126,7 @@ function handleChoice(event) {
     winnerDisplay.style.display = "block";
     replayBtn.style.display = "block";
     scoreTotal.textContent = playerScore;
-  }, 1500);
+  }, 1300);
 
   console.log(
     `handleChoiceFunction sending to determineWinner(${player}, ${computer})`
