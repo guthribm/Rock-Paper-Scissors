@@ -41,6 +41,25 @@
         </div>
       </header>
       <main>
+        <!-- selections-board div shows player selection and ai selection with 
+          winner display replay button -->
+        <div id="selections-board">
+          <div id="selection-display-container">
+            <div id="user">
+              <button id="user-selection" class="btn"></button>
+              <p>YOU PICKED</p>
+            </div>
+            <div id="house">
+              <button id="house-selection" class="btn blank-selection"></button>
+              <p>THE HOUSE PICKED</p>
+            </div>
+          </div>
+
+          <div id="results">
+            <p id="winner">YOU WIN</p>
+            <button id="replay">play again</button>
+          </div>
+        </div>
         <div class="game-board">
           <button class="btn paper" id="paper"></button>
           <button class="btn scissors" id="scissors"></button>
