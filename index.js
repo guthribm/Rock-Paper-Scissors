@@ -36,13 +36,21 @@ let results = get("results");
 // Replay button
 let replayBtn = get("replay");
 
-// let choices = document.querySelectorAll(".btn");
+// function adds highlight to winner
+function addHighlight(selection) {
+  let choices = document.querySelectorAll(".selections-board-btn");
 
-// choices.forEach((button) =>
-//   button.addEventListener("click", (event) =>
-//     console.log(`button ${event.target.id} was clicked`)
-//   )
-// );
+  choices.forEach((button) => {
+    if (button.classList.contains(selection)) {
+      button.classList.add("winner");
+      console.log(`added winner class to button: ${button.id}`);
+    } else {
+      console.log(
+        `highlights fucked up: buttonid- ${button.id} selection- ${selection} classList- ${button.classList}`
+      );
+    }
+  });
+}
 
 // Randomly chooses move from array and returns value
 function computerChoose() {
@@ -62,24 +70,30 @@ function determineWinner(player, computer) {
   } else if (player == "rock" && computer == "scissors") {
     console.log("r beats s");
     winnerText = "YOU WIN";
+    addHighlight(player);
     playerScore++;
   } else if (player == "rock" && computer == "paper") {
     console.log("r loses p");
     winnerText = "YOU LOSE";
+    addHighlight(computer);
   } else if (player == "paper" && computer == "rock") {
     console.log("p beats r");
     winnerText = "YOU WIN";
+    addHighlight(player);
     playerScore++;
   } else if (player == "paper" && computer == "scissors") {
     console.log("p loses s");
     winnerText = "YOU LOSE";
+    addHighlight(computer);
   } else if (player == "scissors" && computer == "paper") {
     console.log("s beats p");
     winnerText = "YOU WIN";
+    addHighlight(player);
     playerScore++;
   } else if (player == "scissors" && computer == "rock") {
     console.log("s loses r");
     winnerText = "YOU LOSE";
+    addHighlight(computer);
   } else {
     console.log("something fucked up");
   }
@@ -100,7 +114,10 @@ function handleChoice(event) {
 
   // gets selection from computer and assigns to variable
   let computer = computerChoose();
-  determineWinner(player, computer);
+  // determineWinner(player, computer);
+  setTimeout(() => {
+    determineWinner(player, computer);
+  }, 1500);
   setTimeout(() => {
     houseSelection.classList.remove("blank-selection");
     houseSelection.classList.add(computer);
@@ -144,6 +161,8 @@ function playAgainHandler() {
   houseSelection.classList.remove("rock");
   houseSelection.classList.remove("scissors");
   houseSelection.classList.remove("paper");
+  userSelection.classList.remove("winner");
+  houseSelection.classList.remove("winner");
   houseSelection.classList.add("blank-selection");
   console.log("should have removed all classes");
 }
