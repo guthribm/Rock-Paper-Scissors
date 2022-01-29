@@ -298,8 +298,8 @@ footer {
 @media (min-width: 600px) {
   #rules {
     position: absolute;
-    bottom: 2rem;
-    right: 2rem;
+    bottom: 4rem;
+    right: 6rem;
     font-size: 0.8rem;
   }
 
