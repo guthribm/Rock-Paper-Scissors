@@ -43,7 +43,6 @@ function addHighlight(selection) {
   choices.forEach((button) => {
     if (button.classList.contains(selection)) {
       button.classList.add("winner");
-      console.log(`added winner class to button: ${button.id}`);
     } else {
       console.log(
         `highlights fucked up: buttonid- ${button.id} selection- ${selection} classList- ${button.classList}`
@@ -57,7 +56,6 @@ function computerChoose() {
   let array = ["rock", "paper", "scissors"];
   let index = Math.floor(Math.random() * array.length);
   let choice = array[index];
-  console.log(`computerChoose() returns ${choice}`);
   return choice;
 }
 
@@ -65,52 +63,47 @@ function determineWinner(player, computer) {
   let winnerText = "";
   console.log(`sending into determin winner: ${player} ${computer}`);
   if (player === computer) {
-    console.log(`${player} same as ${computer}`);
     winnerText = "TIE";
   } else if (player == "rock" && computer == "scissors") {
-    console.log("r beats s");
     winnerText = "YOU WIN";
     addHighlight(player);
     playerScore++;
   } else if (player == "rock" && computer == "paper") {
-    console.log("r loses p");
     winnerText = "YOU LOSE";
     addHighlight(computer);
   } else if (player == "paper" && computer == "rock") {
-    console.log("p beats r");
     winnerText = "YOU WIN";
     addHighlight(player);
     playerScore++;
   } else if (player == "paper" && computer == "scissors") {
-    console.log("p loses s");
     winnerText = "YOU LOSE";
     addHighlight(computer);
   } else if (player == "scissors" && computer == "paper") {
-    console.log("s beats p");
     winnerText = "YOU WIN";
     addHighlight(player);
     playerScore++;
   } else if (player == "scissors" && computer == "rock") {
-    console.log("s loses r");
     winnerText = "YOU LOSE";
     addHighlight(computer);
   } else {
     console.log("something fucked up");
   }
 
-  console.log(
-    `coming out of determine winner function - player: ${player} computer: ${computer}`
-  );
-  console.log("winner" + winnerText);
+  // console.log(
+  //   `coming out of determine winner function - player: ${player} computer: ${computer}`
+  // );
+  // console.log("winner" + winnerText);
   winnerDisplay.textContent = winnerText;
 }
 
 // Changes board to show selections screen
 function handleChoice(event) {
   let player = `${event.target.id}`;
-  gameBoard.style.display = "none";
-  selectionsPage.style.display = "grid";
-  userSelection.classList.add(event.target.id);
+  setTimeout(() => {
+    gameBoard.style.display = "none";
+    selectionsPage.style.display = "grid";
+    userSelection.classList.add(event.target.id);
+  }, 400);
 
   // gets selection from computer and assigns to variable
   let computer = computerChoose();
@@ -127,13 +120,6 @@ function handleChoice(event) {
     replayBtn.style.display = "block";
     scoreTotal.textContent = playerScore;
   }, 1300);
-
-  console.log(
-    `handleChoiceFunction sending to determineWinner(${player}, ${computer})`
-  );
-
-  console.log("handleChoiceFunction computer chooses: " + computer);
-  console.log("handleChoiceFunction user chooses: " + event.target.id);
 }
 
 // function closes game page and opens rules page
@@ -151,7 +137,6 @@ function closeRulesHandler() {
 // function handles play again button press by reseting board
 function playAgainHandler() {
   selectionsPage.style.display = "none";
-  // results.style.display = "none";
   winnerDisplay.style.display = "none";
   replayBtn.style.display = "none";
   gameBoard.style.display = "grid";
